@@ -27,7 +27,7 @@ public class User {
         this.ud = ud;
     }
 
-    @OneToOne(mappedBy = "u")
+    @OneToOne(mappedBy = "user")
     private User_deatil ud;
 
     public String getPassword() {

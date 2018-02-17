@@ -29,8 +29,7 @@ public class User_deatil {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
     @NotNull
-    private User u;
-
+    private User user;
 
     public int getUid() {
         return uid;
@@ -72,12 +71,12 @@ public class User_deatil {
         this.contact = contact;
     }
 
-    public User getU() {
-        return u;
+    public User getUser() {
+        return user;
     }
 
-    public void setU(User u) {
-        this.u = u;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
