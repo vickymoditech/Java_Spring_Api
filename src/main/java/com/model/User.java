@@ -1,5 +1,8 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +22,12 @@ public class User {
     @NotNull
     private String password;
 
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference
+    private User_deatil ud;
+
+//    User(){ }
+
     public User_deatil getUd() {
         return ud;
     }
@@ -26,9 +35,6 @@ public class User {
     public void setUd(User_deatil ud) {
         this.ud = ud;
     }
-
-    @OneToOne(mappedBy = "user")
-    private User_deatil ud;
 
     public String getPassword() {
         return password;

@@ -9,6 +9,8 @@ import com.model.User;
 import com.model.UserRepository;
 import com.model.User_Detail_Repository;
 import com.model.User_deatil;
+import com.model.User_Language_Repository;
+import com.model.User_Language;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
@@ -19,6 +21,9 @@ public class MainContoller {
 
     @Autowired
     private User_Detail_Repository userDetailRepository;
+
+    @Autowired
+    private User_Language_Repository userLanguageRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(MainContoller.class);
 
@@ -61,7 +66,7 @@ public class MainContoller {
 
     /*
     {
-        "u":{
+        "user":{
             "email":"arvind@gmail.com",
             "name":"arvind",
             "password":"arvindtest"
@@ -73,8 +78,6 @@ public class MainContoller {
     }
      */
 
-
-
     @PostMapping(path = "/add")
     public @ResponseBody String addNewUser(@RequestBody User_deatil ud){
 
@@ -82,7 +85,6 @@ public class MainContoller {
         return "saved";
 
     }
-
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
@@ -92,8 +94,24 @@ public class MainContoller {
 
     @GetMapping(path = "/all_detail")
     public @ResponseBody Iterable<User_deatil> getAllUsers_Detail(){
-        //logger.info(userDetailRepository.findAll());
+        logger.info(userDetailRepository.findAll().toString());
         return userDetailRepository.findAll();
+    }
+
+    /* localhost:8087/demo/add_language?language=java */
+    @GetMapping(path = "/add_language")
+    public @ResponseBody String addNewLanguage(@RequestParam String language){
+        logger.info(language);
+        User_Language newlanguage = new User_Language();
+        newlanguage.setLname(language);
+        userLanguageRepository.save(newlanguage);
+        return "saved";
+    }
+
+    /* localhost:8087/demo/all_language */
+    @GetMapping(path = "/all_language")
+    public @ResponseBody Iterable<User_Language> getAllLanguage(){
+        return userLanguageRepository.findAll();
     }
 
 }

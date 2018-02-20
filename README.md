@@ -9,7 +9,7 @@ create database example_db;
 
 ## Api ends point
 
-localhost:8087/demo/add (post method)
+**localhost:8087/demo/add** (post method)
 
 {
   "user":{
@@ -23,8 +23,46 @@ localhost:8087/demo/add (post method)
   "lname":"modi"
 }
 
-### result 
-saved 
+**result** saved 
 
+**localhost:8087/demo/all_detail** (get method)
 
+**result** [
+               {
+                   "uid": 1,
+                   "fname": "vicky",
+                   "lname": "modi",
+                   "city": "surat",
+                   "contact": 8401060120,
+                   "user": {
+                       "id": 1,
+                       "name": "vicky",
+                       "email": "vicky123modi.com",
+                       "password": "vicky123"
+                   }
+               }
+           ]
+           
+**localhost:8087/demo/all** (get method)
 
+**result** [
+               {
+                   "id": 1,
+                   "name": "vicky",
+                   "email": "vicky123modi.com",
+                   "password": "vicky123"
+               }
+           ]
+           
+**localhost:8087/demo/add_language?language=java** (get method)
+
+**result** saved
+
+**localhost:8087/demo/all_language** (get method)
+
+**result** [
+               {
+                   "lid": 1,
+                   "lname": "java"
+               }
+           ]

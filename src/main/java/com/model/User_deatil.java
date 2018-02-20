@@ -31,6 +31,9 @@ public class User_deatil {
     @NotNull
     private User user;
 
+//    User_deatil(){ }
+
+
     public int getUid() {
         return uid;
     }
