@@ -26,7 +26,17 @@ public class User {
     @JsonBackReference
     private User_deatil ud;
 
-//    User(){ }
+    @ManyToMany(mappedBy = "user_id")
+    @JsonBackReference
+    private User_Language ul;
+
+    public User_Language getUl() {
+        return ul;
+    }
+
+    public void setUl(User_Language ul) {
+        this.ul = ul;
+    }
 
     public User_deatil getUd() {
         return ud;

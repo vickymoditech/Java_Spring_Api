@@ -9,8 +9,8 @@ import com.model.User;
 import com.model.UserRepository;
 import com.model.User_Detail_Repository;
 import com.model.User_deatil;
-import com.model.User_Language_Repository;
-import com.model.User_Language;
+import com.model.Language_Repository;
+import com.model.Language;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
@@ -23,7 +23,7 @@ public class MainContoller {
     private User_Detail_Repository userDetailRepository;
 
     @Autowired
-    private User_Language_Repository userLanguageRepository;
+    private Language_Repository languageRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(MainContoller.class);
 
@@ -102,16 +102,16 @@ public class MainContoller {
     @GetMapping(path = "/add_language")
     public @ResponseBody String addNewLanguage(@RequestParam String language){
         logger.info(language);
-        User_Language newlanguage = new User_Language();
+        Language newlanguage = new Language();
         newlanguage.setLname(language);
-        userLanguageRepository.save(newlanguage);
+        languageRepository.save(newlanguage);
         return "saved";
     }
 
     /* localhost:8087/demo/all_language */
     @GetMapping(path = "/all_language")
-    public @ResponseBody Iterable<User_Language> getAllLanguage(){
-        return userLanguageRepository.findAll();
+    public @ResponseBody Iterable<Language> getAllLanguage(){
+        return languageRepository.findAll();
     }
 
 }
